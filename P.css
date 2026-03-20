@@ -1,0 +1,202 @@
+/* ===============================
+   VARIÁVEIS GLOBAIS – CORES
+================================ */
+:root {
+  --primary: #007bff;           /* Azul principal */
+  --secondary: #f70000;         /* Vermelho para destaque */
+  --accent: #f5f5fb;            /* Cor dos cards */
+  --background: #ffffff;        /* Fundo da página */
+  --text: #3f373e;              /* Texto principal */
+  --text-secondary: #555;       /* Texto secundário */
+  --shadow: 0 10px 25px rgba(0,0,0,0.1);
+  --transition: 0.3s ease-in-out;
+}
+
+/* DARK MODE */
+body.dark {
+  --primary: #0615ea;
+  --secondary: hwb(0 0% 0%);
+  --accent: #222;
+  --background: #121212;
+  --text: hsl(240, 100%, 31%);
+  --text-secondary: hsla(193, 83%, 51%, 0.56);
+}
+
+/* ===============================
+   HEADER – igual à página inicial
+================================ */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: var(--accent);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: background 0.3s, color 0.3s, padding 0.3s;
+  backdrop-filter: blur(10px);
+}
+header .logo { display: flex; align-items: center; gap: 15px; }
+header .logo img { width: 55px; height: 55px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary); transition: transform 0.3s, box-shadow 0.3s; }
+header .logo img:hover { transform: scale(1.1); box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+header .logo-text { font-size: 1.6rem; font-weight: 700; color: var(--primary); letter-spacing: 1px; text-shadow: 1px 1px 3px rgba(0,0,0,0.2); }
+header .header-right { display: flex; align-items: center; gap: 20px; }
+header .header-right button.dark-btn { background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--text); transition: color 0.3s, transform 0.3s; }
+header .header-right button.dark-btn:hover { color: var(--primary); transform: rotate(20deg); }
+header .lang-switch button { margin-left: 5px; padding: 6px 12px; border-radius: 10px; border: 1px solid var(--primary); background: var(--accent); color: var(--primary); font-weight: 600; cursor: pointer; transition: all 0.3s ease; }
+header .lang-switch button:hover { background: var(--primary); color: var(--accent); transform: scale(1.05); }
+header nav.menu { display: flex; gap: 20px; margin-left: 30px; }
+header nav.menu a { position: relative; font-weight: 500; color: var(--text); padding: 8px 12px; border-radius: 8px; transition: all 0.3s ease; }
+header nav.menu a.cta { padding: 10px 18px; background: var(--primary); color: var(--accent); font-weight: 600; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
+header nav.menu a.cta:hover { background: var(--secondary); box-shadow: 0 6px 12px rgba(0,0,0,0.25); transform: translateY(-2px); }
+header nav.menu a::after { content: ""; position: absolute; width: 0%; height: 2px; background: var(--primary); left: 0; bottom: 0; transition: width 0.3s ease; }
+header nav.menu a:hover::after { width: 100%; }
+
+/* ===============================
+   EXPERIÊNCIA – CARDS VISÍVEIS E INTERATIVOS
+================================ */
+section#experience {
+  padding: 80px 20px;
+  background: var(--background);
+  color: var(--text);
+  text-align: center;
+}
+section#experience .section-title {
+  font-size: 2.8rem;
+  margin-bottom: 30px;
+  color: var(--primary);
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.15);
+}
+section#experience .frase {
+  font-size: 1.2rem;
+  margin-bottom: 60px;
+  color: var(--text-secondary);
+}
+
+/* Container de cards */
+.experience-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 35px;
+  justify-items: center;
+}
+
+/* Card de experiência */
+.experience-card {
+  background: hsl(210, 80%, 95%); /* Cor única clara */
+  border-radius: 20px;
+  padding: 30px 25px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.3s, color 0.3s;
+  width: 100%;
+  max-width: 360px;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+.experience-card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+  background: hsl(210, 90%, 100%);
+}
+.experience-card:hover .experience-header h3,
+.experience-card:hover .experience-header span,
+.experience-card:hover .experience-period,
+.experience-card:hover p,
+.experience-card:hover .experience-skills span {
+  transform: scale(1.05);
+  opacity: 1;
+}
+
+/* Header do card */
+.experience-card .experience-header h3 {
+  font-size: 1.5rem;
+  color: var(--primary);
+  margin-bottom: 5px;
+  transition: transform 0.35s, color 0.3s;
+}
+.experience-card .experience-header span {
+  display: block;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 15px;
+  font-weight: 500;
+  transition: transform 0.35s, color 0.3s, opacity 0.35s;
+}
+
+/* Período */
+.experience-card .experience-period {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--secondary);
+  margin-bottom: 15px;
+  letter-spacing: 0.5px;
+  transition: transform 0.35s, color 0.3s;
+}
+
+/* Descrição */
+.experience-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: var(--text);
+  transition: transform 0.35s, color 0.3s;
+}
+
+/* Skills / Habilidades */
+.experience-card .experience-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+.experience-card .experience-skills span {
+  background: var(--primary);
+  color: var(--accent);
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.35s ease;
+}
+.experience-card .experience-skills span:hover {
+  background: var(--secondary);
+  color: var(--accent);
+  transform: translateY(-3px) scale(1.05);
+}
+
+/* Responsivo */
+@media screen and (max-width: 900px) {
+  .experience-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+/* ===============================
+   FOOTER – igual à página inicial
+================================ */
+footer {
+  background: var(--accent);
+  color: var(--text);
+  text-align: center;
+  padding: 25px 20px;
+  font-size: 0.95rem;
+  box-shadow: 0 -5px 15px rgba(0,0,0,0.05);
+  transition: background 0.3s, color 0.3s;
+}
+footer a {
+  color: var(--primary);
+  font-weight: 600;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+footer a:hover {
+  color: var(--secondary);
+  text-shadow: 0 0 5px var(--secondary);
+}
+
+a{
+    text-decoration: none;
+}
